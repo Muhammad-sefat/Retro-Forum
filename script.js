@@ -49,6 +49,7 @@ const getAllFetchData = async () =>{
 }
 
 const getAllLatestData = async ()=>{
+    loadingBar(true);
     const response = await fetch(" https://openapi.programming-hero.com/api/retro-forum/latest-posts");
     const data = await response.json();
     
@@ -63,7 +64,7 @@ const getAllLatestData = async ()=>{
                         <div class="card-body">
                           <div class="flex items-center gap-3">
                             <i class="fa-solid fa-calendar-days"></i>
-                            <p>${item.author.posted_date}</p>
+                            <p>${item.author.posted_date ? item.author.posted_date : "No Publish Date"}</p>
                           </div>
                           <h2 class="text-lg font-extrabold">${item.title}</h2>
                           <p class="text-[#666] py-1 font-medium">${item.description}</p>
@@ -71,7 +72,7 @@ const getAllLatestData = async ()=>{
                             <img class ="w-[30%] rounded-full" src="${item.profile_image}">
                             <div>
                                 <h2 class="font-bold text-lg">${item.author.name}</h2>
-                                <p class="text-[#666]">${item.author.designation}</p>
+                                <p class="text-[#666]">${item.author.designation ? item.author.designation : "Unknown"}</p>
                             </div>
                           </div>
                         </div>
