@@ -28,7 +28,7 @@ const getAllFetchData = async () =>{
                             <div class="flex items-center justify-between gap-5">
                                 <div class="flex">
                                     <div class="flex items-center pr-5">
-                                        <i class="fa-regular fa-message text-base text-[#666] mr-2 font-medium"></i>
+                                        <i id="fa-regular" class="fa-regular fa-message text-base text-[#666] mr-2 font-medium"></i>
                                         <p class="text-base text-[#666] font-medium">${item.comment_count}</p>
                                     </div>
                                     <div class="flex items-center pr-5">
@@ -50,10 +50,6 @@ const getAllFetchData = async () =>{
     }) 
 }
 
-
-function getData(title,view){
-    console.log(title,view);
-}
 const getAllLatestData = async ()=>{
     const response = await fetch(" https://openapi.programming-hero.com/api/retro-forum/latest-posts");
     const data = await response.json();
@@ -84,6 +80,40 @@ const getAllLatestData = async ()=>{
         `;
         latestCardContainer.appendChild(newDiv);
     })
+}
+
+
+function getData(title,view){
+    // increse counter number
+    const counterNumber = parseInt(document.getElementById('counter-number').innerText);
+    const newCounterNumber = counterNumber + 1;
+    addNumberElementById("counter-number",newCounterNumber);
+
+    // append div
+    const faRegular = document.getElementById('fa-regular');
+    console.log(faRegular);
+    const appendDiv = document.getElementById('append-div');
+    const newDiv = document.createElement('div');
+    newDiv.className = "flex justify-between bg-white p-3 rounded-lg mt-5";
+    const p1 = document.createElement('p1');
+    p1.className = "text-lg font-bold"
+    const p2 = document.createElement('p2');
+    p2.className = "text-lg text-[#666] font-bold";
+    const p3 = document.createElement('p3');
+    p3.className = "text-lg text-[#666] font-bold";
+    p1.innerText = title;
+    p2.innerHTML = `<i class="fa-regular fa-eye"></i>`
+    p3.innerText = view;
+    newDiv.appendChild(p1);
+    newDiv.appendChild(p2);
+    newDiv.appendChild(p3);
+    appendDiv.appendChild(newDiv);
+
+}
+
+function addNumberElementById(elementId,value){
+    const element = document.getElementById(elementId);
+    element.innerText = value;
 }
 
 
