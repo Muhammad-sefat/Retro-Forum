@@ -1,4 +1,5 @@
 const getAllFetchData = async () =>{
+    loadingBar(true);
     const response = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
     const data = await response.json();
     const allData = data.posts;
@@ -6,10 +7,6 @@ const getAllFetchData = async () =>{
     const cardContainer = document.getElementById('card-container');
 
     allData.forEach((item)=>{
-
-
-        
-        // console.log(item);
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `
         <div class="flex flex-col md:flex-row items-center gap-5 bg-[#F3F3F5] rounded-xl p-5 mb-10">
@@ -48,6 +45,7 @@ const getAllFetchData = async () =>{
         `;
         cardContainer.appendChild(newDiv);
     }) 
+    loadingBar(false);
 }
 
 const getAllLatestData = async ()=>{
@@ -57,6 +55,7 @@ const getAllLatestData = async ()=>{
     const latestCardContainer = document.getElementById("latest-card-container");
 
     data.forEach((item)=>{
+        // console.log(item);
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `
         <div class="card bg-base-100 shadow-xl">
@@ -80,6 +79,7 @@ const getAllLatestData = async ()=>{
         `;
         latestCardContainer.appendChild(newDiv);
     })
+    loadingBar(false);
 }
 
 
@@ -111,11 +111,33 @@ function getData(title,view){
 
 }
 
+const loadingBar = (isLoding)=>{
+    const loadingbar = document.getElementById('loading-bar');
+   if(isLoding){
+    loadingbar.classList.remove('hidden');
+   }else{
+    loadingbar.classList.add('hidden');
+   }
+}
+
+
 function addNumberElementById(elementId,value){
     const element = document.getElementById(elementId);
     element.innerText = value;
 }
 
+function searchBtn (){
+    const inputBtn = document.getElementById('input-btn')
+    const inputValue = inputBtn.value;
+    return inputValue;
+}
+const getCategoryById = async ()=>{
+    const response = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts?category=coding");
+    const data = await response.json();
+    console.log(data);
+}
 
+
+getCategoryById();
 getAllLatestData();
 getAllFetchData();

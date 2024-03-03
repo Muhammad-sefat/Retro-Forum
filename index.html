@@ -66,8 +66,8 @@
                 <h2 class=" text-3xl md:text-6xl font-black text-white leading-normal">Welcome to the <span class="text-purple-500">Retro</span> Forum</h2>
                 <p class="text-[#d4d3d3] text-base font-medium">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
                 <div class="bg-white rounded-full p-2 md:w-[70%] flex justify-between mt-5">
-                    <input class="outline-none" type="text" placeholder="Search here">
-                    <button class="bg-blue-500 text-white text-lg px-4 py-2 rounded-full font-medium">search</button>
+                    <input id="input-btn" class="outline-none" type="text" placeholder="Search here">
+                    <button onclick="searchBtn()" class="bg-blue-500 text-white text-lg px-4 py-2 rounded-full font-medium">search</button>
                 </div>
             </div>
             <div class="bg-white w-full p-5 md:px-12 md:py-8 rounded-xl md:w-[40%]">
@@ -93,10 +93,17 @@
 
     <main class="py-5 md:w-[90%] mx-auto p-5">
 
+        
+
         <!-- discuss section -->
         <section class="py-5 p-5 mt-40 md:mt-3">
             <h1 class="text-4xl font-black text-center ">Let’s Discuss</h1>
             <p class="text-center  md:w-[60%] mx-auto py-6 text-[#666] font-normal">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+
+            <!-- loading bar -->
+            <div id="loading-bar" class="text-center py-28 hidden">
+                <span class="loading loading-spinner loading-lg"></span>
+            </div>
 
             <div class="flex flex-col md:flex-row gap-5">
                 <div id="card-container" class="md:w-[68%]">
