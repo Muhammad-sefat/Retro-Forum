@@ -14,7 +14,7 @@ const getAllFetchData = async () =>{
         newDiv.innerHTML = `
         <div class="flex flex-col md:flex-row items-center gap-5 bg-[#F3F3F5] rounded-xl p-5 mb-10">
                         <div class="relative md:w-[20%]">
-                            <i class="fa-solid fa-circle text-xs -left-1 absolute text-lime-700"></i>
+                            <i class="fa-solid fa-circle text-xs -left-1 absolute ${item.isActive?"text-green-700":"text-red-700"}"></i>
                             <img class="rounded-xl" src="${item.image}">
                         </div>
                         <div class = "md:w-[70%]">
@@ -40,24 +40,20 @@ const getAllFetchData = async () =>{
                                         <p  class="text-base text-[#666] font-medium">${item.posted_time} min</p>
                                     </div>
                                 </div>
-                                <p id="get-data"><i class="fa-regular fa-envelope bg-lime-600 text-white p-2 rounded-full"></i></p>
+                                <p onclick="getData('${item.title}',${item.view_count})"><i class="fa-regular fa-envelope bg-lime-600 text-white p-2 rounded-full"></i></p>
                             </div>
                         </div>
 
                     </div>
         `;
         cardContainer.appendChild(newDiv);
-        const getData = document.getElementById('get-data');
-        console.log(getData)
-           getData.addEventListener("click",()=>{
-           const titleText = document.getElementById('title').innerText;
-           console.log(titleText);
-        })
-    })
+    }) 
 }
 
 
-
+function getData(title,view){
+    console.log(title,view);
+}
 const getAllLatestData = async ()=>{
     const response = await fetch(" https://openapi.programming-hero.com/api/retro-forum/latest-posts");
     const data = await response.json();
