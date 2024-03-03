@@ -6,6 +6,9 @@ const getAllFetchData = async () =>{
     const cardContainer = document.getElementById('card-container');
 
     allData.forEach((item)=>{
+
+
+        
         // console.log(item);
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `
@@ -19,7 +22,7 @@ const getAllFetchData = async () =>{
                                 <p class="text-base font-medium">#${item.category}</p>
                                 <p class="text-base font-medium">Author : ${item.author.name}</p>
                             </div>
-                            <h2 class="text-2xl font-bold py-5">${item.title}</h2>
+                            <h2 id="title" class="text-2xl font-bold py-5">${item.title}</h2>
                             <p class="text-base text-[#666] leading-normal pb-3">${item. description}</p>
                             <hr class="border-dotted border border-gray-400 mb-4">
                             <div class="flex items-center justify-between gap-5">
@@ -37,15 +40,23 @@ const getAllFetchData = async () =>{
                                         <p  class="text-base text-[#666] font-medium">${item.posted_time} min</p>
                                     </div>
                                 </div>
-                                <i class="fa-regular fa-envelope bg-lime-600 text-white p-2 rounded-full"></i>
+                                <p id="get-data"><i class="fa-regular fa-envelope bg-lime-600 text-white p-2 rounded-full"></i></p>
                             </div>
                         </div>
 
                     </div>
         `;
         cardContainer.appendChild(newDiv);
+        const getData = document.getElementById('get-data');
+        console.log(getData)
+           getData.addEventListener("click",()=>{
+           const titleText = document.getElementById('title').innerText;
+           console.log(titleText);
+        })
     })
 }
+
+
 
 const getAllLatestData = async ()=>{
     const response = await fetch(" https://openapi.programming-hero.com/api/retro-forum/latest-posts");
@@ -54,7 +65,6 @@ const getAllLatestData = async ()=>{
     const latestCardContainer = document.getElementById("latest-card-container");
 
     data.forEach((item)=>{
-        console.log(item);
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `
         <div class="card bg-base-100 shadow-xl">
@@ -79,5 +89,7 @@ const getAllLatestData = async ()=>{
         latestCardContainer.appendChild(newDiv);
     })
 }
+
+
 getAllLatestData();
 getAllFetchData();
