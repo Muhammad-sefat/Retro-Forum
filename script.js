@@ -44,7 +44,8 @@ const getAllFetchData = async () =>{
         `;
         cardContainer.appendChild(newDiv);
     }) 
-    loadingBar(false);
+  loadingBar(false);
+    
 }
 
 const getAllLatestData = async ()=>{
@@ -112,10 +113,12 @@ function getData(title,view){
 }
 
 const searchBtn = async ()=>{
-    loadingBar(true);
+    loadingBar(true)
     const inputBtn = document.getElementById('input-btn')
     const inputValueById = inputBtn.value;
-    getCategoryById(inputValueById); 
+    setTimeout(function(){
+        getCategoryById(inputValueById);
+    },2000); 
 }
 const getCategoryById = async (inputValueById)=>{
     const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${inputValueById}`);
@@ -163,7 +166,8 @@ const getCategoryById = async (inputValueById)=>{
         `;
         cardContainer.appendChild(newDiv);
     })
-    loadingBar(false)
+        loadingBar(false);
+
 }
 
 const loadingBar = (isLoding)=>{
