@@ -44,8 +44,7 @@ const getAllFetchData = async () =>{
         `;
         cardContainer.appendChild(newDiv);
     }) 
-  loadingBar(false);
-    
+  loadingBar(false);   
 }
 
 const getAllLatestData = async ()=>{
@@ -56,10 +55,9 @@ const getAllLatestData = async ()=>{
     const latestCardContainer = document.getElementById("latest-card-container");
 
     data.forEach((item)=>{
-        // console.log(item);
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `
-        <div class="card bg-base-100 shadow-xl">
+        <div class="card bg-base-100 shadow-xl h-full">
                         <figure><img src="${item.cover_image}" /></figure>
                         <div class="card-body">
                           <div class="flex items-center gap-3">
@@ -167,7 +165,6 @@ const getCategoryById = async (inputValueById)=>{
         cardContainer.appendChild(newDiv);
     })
         loadingBar(false);
-
 }
 
 const loadingBar = (isLoding)=>{

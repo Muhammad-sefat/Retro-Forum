@@ -32,11 +32,9 @@
         border-radius: 6px;
         padding: 4px 0;
         font-size: 8px;
-        /* Position the tooltip */
         position: absolute;
         z-index: 1;
     }
-
       .tool:hover .tool-text {
         visibility: visible;
     }
@@ -66,7 +64,7 @@
                 <h2 class=" text-3xl md:text-6xl font-black text-white leading-normal">Welcome to the <span class="text-purple-500">Retro</span> Forum</h2>
                 <p class="text-[#d4d3d3] text-base font-medium">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
                 <div class="bg-white rounded-full p-2 md:w-[70%] flex justify-between mt-5">
-                    <input id="input-btn" class="outline-none" type="text" placeholder="Search here">
+                    <input id="input-btn" class="outline-0" type="text" placeholder="Search here">
                     <button onclick="searchBtn()" class="bg-blue-500 text-white text-lg px-4 py-2 rounded-full font-medium">search</button>
                 </div>
             </div>
@@ -136,15 +134,9 @@
                 <h1 class="text-4xl font-black text-center ">Latest Posts</h1>
                 <p class="text-center  md:w-[60%] mx-auto py-6 text-[#666] font-normal">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined.</p>
 
-                <!-- loading bar -->
-                <div id="loading-bar" class="text-center py-28 hidden">
-                  <span class="loading loading-spinner loading-lg"></span>
-                </div>
-
                 <div id="latest-card-container" class="grid grid-cols-1 md:grid-cols-3 gap-5 py-5">
 
                 </div>
-
             </div>
         </section>
 
